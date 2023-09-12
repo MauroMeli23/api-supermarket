@@ -33,7 +33,8 @@ func main() {
 	Products = loadedProducts
 	// Inicializar el enrutador Gin
 	r := gin.Default()
-	r.Use(middleware.AuthMiddleware)
+	r.Use(middleware.AuthMiddleware())
+	r.Use(middleware.RequestLogger())
 
 	// Definir las rutas
 	r.GET("/products", func(c *gin.Context) {
